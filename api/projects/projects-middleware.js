@@ -22,7 +22,6 @@ function validateProjId(req, res, next) {
         message: "missing required name and description fields"
       })
     } else {
-
       next()
     }
   }
