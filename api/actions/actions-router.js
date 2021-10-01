@@ -14,28 +14,43 @@ router.get("/", (req, res, next) => {
   });
 
 
-  router.get("/:id", validateActId, (req, res, next) => {
+router.get("/:id", validateActId, (req, res, next) => {
     Actions.get(req.params.id)
       .then((action) => {
         res.status(200).json(action);
       })
       .catch(next);
-  });
+});
 
-  router.post("/", validateActBody, (req, res, next) => {
+router.post("/", validateActBody, (req, res, next) => {
     Actions.insert(req.body)
       .then((action) => {
         res.status(201).json(action);
       })
       .catch(next);
-  });
+});
 
-  router.delete("/:id", validateActId, (req, res, next) => {
+router.put("/:id", validateActId, (req, res, next) => {
+    if(req.body.completed){
+        Actions.update(req.params.id, req.body)
+        .then(() => {
+            res.status(200).json(req.body);
+          })
+          .catch((err) => {
+            next(err);
+          });
+    }else{
+        res.status(400).json({ message: "Try again will all forms filled" });
+    }
+
+});
+
+router.delete("/:id", validateActId, (req, res, next) => {
     Actions.remove(req.params.id)
       .then(() => {
         res.status(200).json();
       })
       .catch(next);
-  });
+});
 
   module.exports = router;  

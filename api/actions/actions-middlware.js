@@ -21,6 +21,6 @@ function validateActBody(req, res, next) {
       } else {
         next();
       }
-  }
+}
 
   module.exports = { validateActId, validateActBody };

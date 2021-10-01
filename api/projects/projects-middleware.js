@@ -15,7 +15,7 @@ function validateProjId(req, res, next) {
       .catch(next);
   }
 
-  function validateProjBody(req, res, next) {
+function validateProjBody(req, res, next) {
 
     if(!req.body.name || !req.body.description || req.body.completed == null) {
       res.status(400).json({
