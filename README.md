@@ -147,7 +147,10 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+  - Node is Asynchronus and is event driven making the transition from Javascript to node easy. Express allows the creation of middlewares that can handle HTTP requests.
 1. Understand and explain the use of Middleware.
+  - A middleware bridges the gap by having access to the response and request.
 1. The basic principles of the REST architectural style.
 1. Understand and explain the use of Express Routers.
+  - Express Routers are similar to HTTP methods and are used to retrieve.
 1. Describe tooling used to manually test the correctness of an API.
