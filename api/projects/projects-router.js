@@ -18,9 +18,7 @@ router.get("/:id", validateProjId, (req, res, next) => {
       .then((project) => {
         res.status(200).json(project);
       })
-      .catch(err =>{
-          next(err)
-        });
+      .catch(next);
 });
 
 router.post('/', validateProjBody, (req, res, next) => {
@@ -34,5 +32,24 @@ router.post('/', validateProjBody, (req, res, next) => {
 });
 
 
+
+router.delete("/:id", validateProjId, (req, res, next) => {
+    Projects.remove(req.params.id)
+      .then(() => {
+        res.status(200).json();
+      })
+      .catch(next);
+});
+
+
+  router.get('/:id/actions', validateProjId, (req, res, next) => {
+    Projects.getProjectActions(req.params.id)
+        .then(projAct =>{
+            res.status(200).json(projAct);
+        })
+        .catch(err => {
+            next(err);
+        });
+});
 
 module.exports = router;

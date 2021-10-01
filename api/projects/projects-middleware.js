@@ -16,13 +16,13 @@ function validateProjId(req, res, next) {
   }
 
   function validateProjBody(req, res, next) {
-    const {name, description} = req.body 
-    if(!name || !description) {
+
+    if(!req.body.name || !req.body.description || req.body.completed == null) {
       res.status(400).json({
         message: "missing required name and description fields"
       })
     } else {
       next()
     }
-  }
+}
   module.exports ={validateProjId, validateProjBody}
